@@ -11,6 +11,9 @@ df = pd.DataFrame(data)
 # Print the output.
 print(df)
 
+# Select columns
+print(df[['Name','Gender']])
+
 # Basic query
 print(df.query('Age > 20'))
 print(df.query('Name == "Tom"'))
@@ -26,8 +29,9 @@ print(df)
 df1a = df.assign(weight = [200, 250, 300, 350, 120, 140])
 print(df1a)
 
-
 # Add a row
+df.append({'Name' : ['Steve'], 'Age' : [32], 'Height' : [220]}, ignore_index=True)
+print(df)
 
 # Create a 2nd DataFrame
 
@@ -55,4 +59,4 @@ print(df3)
 # Group by
 print(df3.groupby(['Gender']).mean())
 print(df3.groupby(['Gender']).min())
-print(df3.groupby(['Gender']).max())
+print(df3[['Gender','Age']].groupby(['Gender']).max())
